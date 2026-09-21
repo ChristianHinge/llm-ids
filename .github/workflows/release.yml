@@ -45,3 +45,15 @@ jobs:
           gh release create "v${{ steps.bump.outputs.version }}" \
             --title "v${{ steps.bump.outputs.version }}" \
             --generate-notes
+
+  # Creating the release above uses the default GITHUB_TOKEN, and GitHub
+  # deliberately does not let GITHUB_TOKEN-authored events (like that
+  # release) trigger other workflows, to prevent infinite trigger loops.
+  # So publish.yml's `on: release: published` never fires from our own
+  # automation -- call it directly instead, which always runs regardless.
+  publish:
+    needs: bump
+    uses: ./.github/workflows/publish.yml
+    permissions:
+      id-token: write
+      contents: read

@@ -2,7 +2,9 @@ name: Publish to PyPI
 
 on:
   release:
-    types: [published]
+    types: [published]  # fires if a human publishes a release by hand
+  workflow_call:         # called directly by release.yml -- see its comment for why
+  workflow_dispatch:     # manual emergency publish for an already-tagged release
 
 jobs:
   test:
