@@ -22,6 +22,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          current_version="$(uv run cz version --project)"
+          current_tag="v${current_version}"
+          if ! git rev-parse --verify --quiet "refs/tags/${current_tag}" >/dev/null; then
+            git tag "${current_tag}" "$(git rev-list --max-parents=0 HEAD)"
+          fi
           uv run cz bump --changelog --yes
           echo "version=$(uv run cz version --project)" >> "$GITHUB_OUTPUT"
 
