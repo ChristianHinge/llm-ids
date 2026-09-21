@@ -1,0 +1,25 @@
+[project]
+name = "llm-ids"
+version = "0.1.0"
+description = "Encode arbitrary bytes as token-efficient, LLM-friendly strings"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Christian Hinge", email = "christian.hinge@outlook.dk" }
+]
+requires-python = ">=3.10"
+dependencies = []
+keywords = ["llm", "tokenizer", "tiktoken", "id", "uid", "encoding"]
+
+[dependency-groups]
+dev = [
+    "huggingface-hub>=1.32.0",
+    "pytest>=8",
+    "tiktoken>=0.8",
+    "tokenizers>=0.23.2",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.25,<0.12.0"]
+build-backend = "uv_build"
