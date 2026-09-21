@@ -1,7 +1,7 @@
 [project]
 name = "llm-ids"
 version = "0.1.0"
-description = "Encode arbitrary bytes as token-efficient, LLM-friendly strings"
+description = "Encode data as token-efficient, LLM-friendly strings"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -14,11 +14,20 @@ keywords = ["llm", "tokenizer", "tiktoken", "id", "uid", "encoding"]
 
 [dependency-groups]
 dev = [
+    "commitizen>=4.18.1",
     "huggingface-hub>=1.32.0",
     "pytest>=8",
     "tiktoken>=0.8",
     "tokenizers>=0.23.2",
 ]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.1.0"
+version_provider = "pep621"
+tag_format = "v$version"
+major_version_zero = true
+update_changelog_on_bump = true
 
 [build-system]
 requires = ["uv_build>=0.11.25,<0.12.0"]

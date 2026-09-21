@@ -66,3 +66,5 @@ To regenerate an alphabet's data file from its source tokenizer vocabulary
 ```
 uv run python scripts/build_alphabets.py
 ```
+
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/) (`fix:`, `feat:`, `feat!:`/`BREAKING CHANGE:`), checked on every PR. A maintainer triggers a release manually from the Actions tab (`Release` workflow), which runs [Commitizen](https://commitizen-tools.github.io/commitizen/) to bump the version, update `CHANGELOG.md`, tag, and create a GitHub Release -- publishing to PyPI happens automatically from there.
