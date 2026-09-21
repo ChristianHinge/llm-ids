@@ -25,7 +25,9 @@ jobs:
           uv run cz bump --changelog --yes
           echo "version=$(uv run cz version --project)" >> "$GITHUB_OUTPUT"
 
-      - run: git push --follow-tags
+      - run: |
+          git push
+          git push origin "v${{ steps.bump.outputs.version }}"
 
       - name: Create GitHub Release
         env:
